@@ -1,22 +1,23 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, useColorScheme, View } from "react-native";
 import React from "react";
 import HeaderLink from "../headerLink/HeaderLink";
 import { FontAwesome6, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Avatar } from "@rneui/themed";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { Colors } from "@/constants/Colors";
 
 export default function HeaderShortcuts() {
-  const color = useThemeColor({ light: "#070713", dark: "#fff" }, "text");
+  const theme =
+    useColorScheme() === "light" ? { ...Colors.light } : { ...Colors.dark };
 
   return (
     <View style={styles.iconContainer}>
-      <HeaderLink to="/profile">
-        <FontAwesome6 name="bag-shopping" size={18} color={color} />
+      <HeaderLink to="(profile)">
+        <FontAwesome6 name="bag-shopping" size={18} color={theme.icon} />
       </HeaderLink>
       <HeaderLink to="/">
-        <MaterialCommunityIcons name="heart" size={22} color={color} />
+        <MaterialCommunityIcons name="heart" size={22} color={theme.icon} />
       </HeaderLink>
-      <HeaderLink to="/profile" style={{ marginRight: 0 }}>
+      <HeaderLink to="(profile)" style={{ marginRight: 0 }}>
         <Avatar
           rounded
           size={35}

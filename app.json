@@ -32,10 +32,11 @@
         "expo-font",
         {
           "fonts": [
-            "./assets/fonts/KronaOne.ttf",
-            "./assets/fonts/RobotoFlex.ttf",
-            "./assets/fonts/Outfit.ttf",
-            "./assets/fonts/JetBrainsMono.ttf"
+            "node_modules/@expo-google-fonts/krona-one/KronaOne_400Regular.ttf",
+            "node_modules/@expo-google-fonts/outfit/Outfit_400Regular.ttf",
+            "node_modules/@expo-google-fonts/outfit/Outfit_600SemiBold.ttf",
+            "node_modules/@expo-google-fonts/jetbrains-mono/JetBrainsMono_400Regular.ttf",
+            "node_modules/@expo-google-fonts/jetbrains-mono/JetBrainsMono_600SemiBold.ttf"
           ]
         }
       ]

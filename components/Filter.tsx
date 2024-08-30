@@ -6,8 +6,8 @@ import {
   View,
 } from "react-native";
 import React, { useState } from "react";
-import { COLORS } from "../values/Colors";
 import { Link } from "expo-router";
+import { Colors } from "@/constants/Colors";
 
 const filterList = [
   "All",
@@ -22,14 +22,14 @@ const filterList = [
 
 const Item = ({ children, handleFilter, activeFilter }: any) => {
   return (
-    <Link href="/profile" asChild>
+    <Link href="/" asChild>
       <TouchableOpacity
         onPress={() => handleFilter(children)}
         style={{
-          paddingVertical: 6,
+          paddingVertical: 4,
           paddingHorizontal: 12,
           backgroundColor:
-            activeFilter === children ? COLORS.primarylogo : "#fdfdfd",
+            activeFilter === children ? Colors.orange : Colors.cold_white,
           marginRight: 6,
           borderWidth: 0,
           borderRadius: 3,
@@ -37,9 +37,11 @@ const Item = ({ children, handleFilter, activeFilter }: any) => {
       >
         <Text
           style={{
-            fontSize: 16,
-            color: activeFilter === children ? "white" : "#000",
-            fontWeight: activeFilter === children ? "600" : "400",
+            fontFamily: activeFilter === children ? "OutfitSemiBold" : "Outfit",
+            fontSize: 14,
+            color:
+              activeFilter === children ? Colors.white : Colors.textInactive,
+            lineHeight: 20,
           }}
         >
           {children}
@@ -64,6 +66,7 @@ export default function Filter() {
           {item}
         </Item>
       )}
+      ListFooterComponent={<View style={{ width: 100 }} />}
       keyExtractor={(item) => item}
       style={{ paddingLeft: 25, paddingTop: 20, paddingBottom: 25 }}
     />

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-export default function Posts() {
+export default function RecipeDetail() {
   return (
     <View>
-      <Text style={{ color: "white" }}>Posts</Text>
+      <Text>RecipeDetail</Text>
     </View>
   );
 }

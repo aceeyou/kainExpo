@@ -1,11 +1,11 @@
-import { StyleSheet, TouchableHighlight, View } from "react-native";
 import React from "react";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { StyleSheet, useColorScheme, View } from "react-native";
 import { Avatar, Button, Text } from "@rneui/themed";
-import { COLORS } from "@/values/Colors";
+import { Colors } from "@/constants/Colors";
 
 export default function UserInfoCard() {
-  const color = useThemeColor({ light: "#070713", dark: "#fff" }, "text");
+  const theme =
+    useColorScheme() === "light" ? { ...Colors.light } : { ...Colors.dark };
 
   return (
     <View style={styles.cardContainer}>
@@ -20,16 +20,23 @@ export default function UserInfoCard() {
             h1
             h1Style={{
               fontSize: 20,
-              fontWeight: "700",
-              fontFamily: "RobotoFlex",
+              fontFamily: "OutfitSemiBold",
             }}
-            style={[{ color: color }]}
+            style={[{ color: theme.text }]}
           >
             Ace Logronio
           </Text>
           <View style={styles.userhandleEditContainer}>
             <View style={styles.userhandle}>
-              <Text style={[{ color: COLORS.primarybg, fontSize: 12 }]}>
+              <Text
+                style={[
+                  {
+                    color: Colors.primaryText,
+                    fontSize: 12,
+                    fontFamily: "Outfit",
+                  },
+                ]}
+              >
                 @aceeyou
               </Text>
             </View>
@@ -45,9 +52,9 @@ export default function UserInfoCard() {
                 <Text
                   style={[
                     {
-                      color: COLORS.primarybg,
+                      color: Colors.primaryText,
                       fontSize: 12,
-                      fontWeight: "500",
+                      fontFamily: "Outfit",
                     },
                   ]}
                 >
@@ -57,14 +64,18 @@ export default function UserInfoCard() {
             </View>
           </View>
           <View>
-            <Text style={[{ color: color, fontSize: 12 }]}>
+            <Text
+              style={[
+                { color: theme.text, fontSize: 12, fontFamily: "Outfit" },
+              ]}
+            >
               32 recipes • 143 followers
             </Text>
           </View>
         </View>
       </View>
       <View>
-        <Text style={[styles.userbio, { color: color }]}>
+        <Text style={[styles.userbio, { color: theme.text }]}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio id
           fugit nostrum repudiandae qui culpa?
         </Text>
@@ -75,13 +86,14 @@ export default function UserInfoCard() {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    marginHorizontal: 23,
+    // marginHorizontal: 23,
   },
   userInfoTop: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 18,
+    marginBottom: 25,
   },
   userInfoTopRight: {
     marginLeft: 18,
@@ -99,19 +111,18 @@ const styles = StyleSheet.create({
   },
   userhandle: {
     marginRight: "auto",
-    backgroundColor: "#FEBC2E",
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 20,
+    backgroundColor: Colors.yellow,
   },
   userEditButton: {
-    // width: 80,
     paddingVertical: 4,
     marginLeft: "auto",
   },
   userbio: {
-    paddingBottom: 20,
-    fontFamily: "Roboto",
+    paddingBottom: 40,
+    fontFamily: "Outfit",
     fontSize: 16,
     lineHeight: 20,
   },

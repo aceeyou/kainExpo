@@ -14,7 +14,7 @@ export default function HeaderLink({
   to,
 }: headerLinkProps) {
   return (
-    <Link href={to} style={[{ marginRight: 15, zIndex: 4 }, style]}>
+    <Link href={`${to}`} style={[{ marginRight: 15, zIndex: 4 }, style]}>
       {children}
     </Link>
   );

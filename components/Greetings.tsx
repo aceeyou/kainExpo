@@ -16,12 +16,11 @@ export default Greetings;
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: "JetBrainsMono",
+    fontFamily: "JetBrainsMonoSemiBold",
     fontSize: 20,
-    fontWeight: "900",
     color: "white",
-    paddingTop: 25,
-    paddingBottom: 20,
+    paddingTop: 45,
+    paddingBottom: 30,
     paddingHorizontal: 15,
   },
 });

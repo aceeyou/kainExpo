@@ -1,57 +1,21 @@
 import {
   Dimensions,
   FlatList,
-  SectionList,
   StyleSheet,
   Text,
   TouchableOpacity,
+  useColorScheme,
   View,
 } from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { Colors } from "@/constants/Colors";
 import Recipe from "./Recipe";
-
-const popularRecipes = [
-  {
-    id: 1,
-    recipe: "Adobo",
-    source: "https://picsum.photos/500",
-    owner: "aceeyou",
-    cookTime: 1.5,
-  },
-  {
-    id: 2,
-    recipe: "Fried Chicken",
-    source: "https://picsum.photos/500",
-    owner: "aceeyou",
-    cookTime: 1.5,
-  },
-  {
-    id: 3,
-    recipe: "Ice Cream",
-    source: "https://picsum.photos/500",
-    owner: "aceeyou",
-    cookTime: 1.5,
-  },
-  {
-    id: 4,
-    recipe: "Java Rice",
-    source: "https://picsum.photos/500",
-    owner: "aceeyou",
-    cookTime: 1.5,
-  },
-  {
-    id: 5,
-    recipe: "Samgyeupsal Pork BBQ",
-    source: "https://picsum.photos/500",
-    owner: "aceeyou",
-    cookTime: 1.5,
-  },
-];
+import { Sizes } from "@/constants/Sizes";
 
 export default function DiscoverRecipes({ recipes }: any) {
-  const color = useThemeColor({ light: "#070713", dark: "#fff" }, "text");
+  const theme =
+    useColorScheme() === "light" ? { ...Colors.light } : { ...Colors.dark };
 
   const numColumns = 2;
   const gap = 0;
@@ -62,9 +26,9 @@ export default function DiscoverRecipes({ recipes }: any) {
   return (
     <View>
       <View style={styles.titleContainer}>
-        <Text style={[styles.title, { color: color }]}>Discover</Text>
+        <Text style={[styles.title, { color: theme.text }]}>Discover</Text>
         <TouchableOpacity>
-          <MaterialIcons name="filter-list" size={20} color={color} />
+          <MaterialIcons name="filter-list" size={20} color={theme.icon} />
         </TouchableOpacity>
       </View>
       <FlatList
@@ -75,7 +39,7 @@ export default function DiscoverRecipes({ recipes }: any) {
         renderItem={({ item }) => <Recipe recipe={item} itemSize={itemSize} />}
         ListFooterComponent={() => <View style={{ height: itemSize }} />}
         key={numColumns}
-        style={{ paddingHorizontal: 20, width: "100%" }}
+        style={{ paddingHorizontal: Sizes.marginHorizontal, width: "100%" }}
       />
     </View>
   );
@@ -88,10 +52,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
-    paddingHorizontal: 23,
+    paddingHorizontal: Sizes.marginHorizontal,
   },
   title: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 16,
+    fontFamily: "OutfitSemiBold",
   },
 });

@@ -1,18 +1,12 @@
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { FlatList, SafeAreaView, ScrollView, Text, View } from "react-native";
-import { useHeaderHeight } from "@react-navigation/elements";
-import { Link } from "expo-router";
-import { useFonts } from "expo-font";
-import { useEffect } from "react";
-import * as SplashScreen from "expo-splash-screen";
+import { FlatList, SafeAreaView, useColorScheme } from "react-native";
+import React from "react";
 import Greetings from "@/components/Greetings";
 import SearchBarForm from "@/components/SearchBarForm";
 import Filter from "@/components/Filter";
 import PopularRecipes from "@/components/PopularRecipes";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import DiscoverRecipes from "@/components/DiscoverRecipes";
-import Header from "@/components/header/Header";
+import { Colors } from "@/constants/Colors";
 
 const DATA = [{}];
 const RECIPES = [
@@ -59,31 +53,11 @@ const RECIPES = [
 ];
 
 function App() {
-  const headerHeight = useHeaderHeight();
-  const color = useThemeColor({ light: "#070713", dark: "#fff" }, "text");
-  const bgColor = useThemeColor({ light: "#fff", dark: "#070713" }, "text");
-  const [loaded, error] = useFonts({
-    KronaOne: require("../assets/fonts/KronaOne.ttf"),
-    Roboto: require("../assets/fonts/RobotoFlex.ttf"),
-    Outfit: require("../assets/fonts/Outfit.ttf"),
-    JetBrainsMono: require("../assets/fonts/JetBrainsMono.ttf"),
-  });
-
-  useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded, error]);
-
-  if (!loaded && !error) {
-    return null;
-  }
+  const theme =
+    useColorScheme() === "light" ? { ...Colors.light } : { ...Colors.dark };
 
   return (
-    <SafeAreaView
-      style={{ backgroundColor: bgColor }}
-      // contentInsetAdjustmentBehavior="automatic"
-    >
+    <SafeAreaView style={{ backgroundColor: theme.appBG }}>
       <FlatList
         showsVerticalScrollIndicator={false}
         keyboardDismissMode="interactive"

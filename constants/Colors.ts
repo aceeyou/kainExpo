@@ -1,27 +1,45 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+// import { useColorScheme } from "react-native";
+// const isLightMode = useColorScheme() === "light";
 
-const tintColorLight = "#0a7ea4";
-const tintColorDark = "#fff";
-const primaryDark = "#070713";
+const lightModeStyles = {
+  icon: "#070713",
+  text: "#070713",
+  description: "#413C58",
+  appBG: "#f5f5f5",
+  inputBG: "#fff",
+  formSectionBG: "#FDFDFD",
+  formSectionInputBG: "#EBEFF2",
+  accordionArrowBG: "#E0E2E3",
+  separator: "#E0E0E0",
+};
+
+const darkModeStyles = {
+  icon: "#f5f5f5",
+  text: "#f5f5f5",
+  description: "#EBEFF2",
+  appBG: "#070713",
+  inputBG: "#151526",
+  formSectionBG: "#11103A",
+  formSectionInputBG: "#070713",
+  accordionArrowBG: "#3B3651",
+  separator: "#333745",
+};
 
 export const Colors = {
-  light: {
-    text: "#11181C",
-    background: "#fff",
-    tint: tintColorLight,
-    icon: "#687076",
-    tabIconDefault: "#687076",
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: "#ECEDEE",
-    background: "#151718",
-    tint: tintColorDark,
-    icon: "#9BA1A6",
-    tabIconDefault: "#9BA1A6",
-    tabIconSelected: tintColorDark,
-  },
+  primarylogo: "#FF4A1C",
+  primaryText: "#070713",
+  secondaryText: "#758BFD",
+  textError: "#FF4A1C",
+  recipeStepNumBG: "#413C58",
+  placeholder: "#bdbdbd",
+  textInactive: "#A6A9B3",
+  addMinusBtnBG: "#682827",
+  backButtonBG: "#dfdfdf85",
+  red: "#E04255",
+  yellow: "#FEBC2E",
+  orange: "#FF4A1C",
+  white: "#f5f5f5",
+  cold_white: "#fff",
+  light: { ...lightModeStyles },
+  dark: { ...darkModeStyles },
 };
